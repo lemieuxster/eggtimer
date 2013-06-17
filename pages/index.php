@@ -45,10 +45,10 @@ $soundVolume = isset($_COOKIE["soundVolume"]) ? $_COOKIE["soundVolume"] : "1";
 			<div id="sidebar">
             <h2>Updates</h2>
             <ul>
+               <li>JS Title Update.  (05/26/13)</li>
                <li>Bug Fixes.  (03/20/13)</li>
                <li>Options Panel.  (10/07/12)</li>
                <li>Defaulted to HTML.  (09/08/12)</li>
-               <li>Sound fixes in Flash.  (09/08/12)</li>
             </ul>
             <h2>Related</h2>
             <ul>
