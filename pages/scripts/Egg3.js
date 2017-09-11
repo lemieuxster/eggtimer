@@ -153,7 +153,7 @@ var Egg = {
             Egg.updateText(Egg.expiredMessage);
 
             // Let the beep finish before showing alert
-            if (beepFinishedPromise && (typeof beepFinishedPromise.then == 'function')) {
+            if (beepFinishedPromise && (typeof beepFinishedPromise.then === 'function')) {
                 beepFinishedPromise.then(Egg.showAlert);
             } else {
                 Egg.showAlert();
