@@ -137,19 +137,27 @@ var Egg = {
         if (text) Egg.progressText.html(text);
     },
     onTimeComplete:function () {
+        var beepFinishedPromise = null;
+
         Egg.progress = 1;
         Egg.updateProgressBar();
 
         if (Egg.beep && Egg.beep.play) {
             Egg.beep.volume = Egg.volume;
-            Egg.beep.play();
+            beepFinishedPromise = Egg.beep.play();
         }
 
         if (Egg.sequence.length === 0) {
             clearInterval(Egg.ticker);
             Egg.updateTitle(Egg.expiredMessage);
             Egg.updateText(Egg.expiredMessage);
-            Egg.showAlert();
+
+            // Let the beep finish before showing alert
+            if (beepFinishedPromise && (typeof beepFinishedPromise.then === 'function')) {
+                beepFinishedPromise.then(Egg.showAlert);
+            } else {
+                Egg.showAlert();
+            }
         } else {
             var next = Egg.sequence.shift();
             Egg.initializeTimer(0, next.duration * 1000, next.label);
